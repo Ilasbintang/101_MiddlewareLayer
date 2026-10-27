@@ -131,7 +131,12 @@ app.put(
             WHERE id = $4 RETURNING *`,
             [nama, nim, kelas, id]
         )
-    
+        if (result.rowCount === 0) {
+            return errorResponse(res, 'Data Tidak Ditemukan', 404)
+        }
+        return successResponse(res, 'Data Berhasil Diupdate', result.rows[0])
+    },
+);
 
 
 
