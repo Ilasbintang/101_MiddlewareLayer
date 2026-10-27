@@ -121,7 +121,10 @@ app.put(
         biodataSchema
             .fork(["nama", "nim", "kelas"], (field) => field.optional())
             .fork(["id"], (field) => field.forbidden()),
-   
+    ), 
+    async (req, res) => {
+        const { id } = req.params
+        const { nama, nim, kelas } = req.body
 
       
 
